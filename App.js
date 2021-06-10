@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import AppNavigator from './routes/AppNavigator';
+import AppNavigator from './routes/drawer';
 //import 'react-native-gesture-handler'
 export default function App() {
   const getFonts = () => {
