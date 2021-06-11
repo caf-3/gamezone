@@ -3,6 +3,7 @@ import {View, Text, Button, FlatList, TouchableOpacity, Modal} from 'react-nativ
 import { globalStyles } from '../styles/styles';
 import Card from '../components/Card';
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './reviewForm';
 export default function Home({navigation}){
     const [reviews, setReviews] = useState([
         {id: 1, title: 'Zelda', rating: 2, body: 'Lorem Ipsum'},
@@ -16,15 +17,15 @@ export default function Home({navigation}){
     return(
         <View style={globalStyles.container}>
             <Modal visible={isModalOpen} animationType="slide">
-                <View>
-                    <Text style={globalStyles.modalContent}>
+                <View style={globalStyles.modalContent}>
                     <MaterialIcons
                     name="close"
                     size={20}
                     onPress={() => setIsModalOpen(false)}
                     style={globalStyles.modalToggle}
                     />
-                    </Text>
+                    <ReviewForm />
+
                 </View>
             </Modal>
             
