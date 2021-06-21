@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, Button, FlatList, TouchableOpacity, Modal} from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Keyboard, FlatList, TouchableOpacity, Modal} from 'react-native';
 import { globalStyles } from '../styles/styles';
 import Card from '../components/Card';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -14,19 +14,28 @@ export default function Home({navigation}){
     const pressHandler = () =>{
         navigation.push('Details');
     }
+    const addReview = (review) => {
+        review.id = Math.random().toString().substr(2);
+        setReviews((previousReviews) => {
+            return [review, ...previousReviews];
+        });
+        //setIsModalOpen(false);
+    }
     return(
         <View style={globalStyles.container}>
             <Modal visible={isModalOpen} animationType="slide">
-                <View style={globalStyles.modalContent}>
-                    <MaterialIcons
-                    name="close"
-                    size={20}
-                    onPress={() => setIsModalOpen(false)}
-                    style={globalStyles.modalToggle}
-                    />
-                    <ReviewForm />
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={globalStyles.modalContent}>
+                        <MaterialIcons
+                        name="close"
+                        size={20}
+                        onPress={() => setIsModalOpen(false)}
+                        style={globalStyles.modalToggle}
+                        />
+                        <ReviewForm addReview={addReview} />
 
-                </View>
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
             
             <MaterialIcons
