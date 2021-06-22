@@ -54,5 +54,12 @@ export const globalStyles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         borderRadius: 6
+    },
+    errorText: {
+        color: '#f01d71',
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginTop: 6,
+        textAlign: 'left'
     }
 })
